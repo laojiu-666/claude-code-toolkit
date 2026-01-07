@@ -5,7 +5,7 @@ $TmpDir = Join-Path $env:TEMP "claude-code-toolkit-$(Get-Random)"
 
 try {
     git clone --depth 1 "https://github.com/laojiu-666/claude-code-toolkit.git" $TmpDir
-    & "$TmpDir\install.ps1"
+    powershell -ExecutionPolicy Bypass -File "$TmpDir\install.ps1"
 } finally {
     Remove-Item -Recurse -Force $TmpDir -ErrorAction SilentlyContinue
 }
