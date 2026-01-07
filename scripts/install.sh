@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# One-click remote install: curl -fsSL https://raw.githubusercontent.com/laojiu-666/claude-code-toolkit/main/scripts/install.sh | bash
+# One-click install: curl -fsSL https://raw.githubusercontent.com/laojiu-666/claude-code-toolkit/main/scripts/install.sh | bash
 
-REPO="https://github.com/laojiu-666/claude-code-toolkit.git"
-TMP_DIR=$(mktemp -d)
-trap 'rm -rf "$TMP_DIR"' EXIT
+REPO_RAW="https://raw.githubusercontent.com/laojiu-666/claude-code-toolkit/main"
+TARGET_DIR="${CLAUDE_COMMANDS_DIR:-$HOME/.claude/commands}"
+COMMANDS="report.md merge.md"
 
-git clone --depth 1 "$REPO" "$TMP_DIR"
-"$TMP_DIR/install.sh"
+mkdir -p "$TARGET_DIR"
+
+for cmd in $COMMANDS; do
+  curl -fsSL "$REPO_RAW/commands/$cmd" -o "$TARGET_DIR/$cmd"
+  echo "Installed: $TARGET_DIR/$cmd"
+done
+
+echo "Done."
