@@ -40,13 +40,14 @@ iwr -useb https://raw.githubusercontent.com/laojiu-666/claude-code-toolkit/main/
 ```
 
 流程：
-1. 自动 stash 未提交更改
-2. 切换到目标分支并更新
+1. 自动 stash 未提交更改（若有）
+2. 切换到目标分支并更新（已在目标分支则跳过）
 3. 列出待合并提交（编号显示）
 4. 回复序号选择性合并，或 `all` 全部合并
+5. 完成后询问是否切回原分支
 
 ### /commit
-智能 git commit，自动生成规范提交信息。
+智能 git commit，自动生成规范提交信息（Conventional Commits）。
 
 ```
 /commit [staged|all]
@@ -58,8 +59,7 @@ iwr -useb https://raw.githubusercontent.com/laojiu-666/claude-code-toolkit/main/
 
 提交信息格式：
 ```
-<type>[模块名] 一句话总结
+<type>(<scope>): <subject>
 
-- 具体功能点1
-- 具体功能点2
+<body>
 ```
