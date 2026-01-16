@@ -12,7 +12,13 @@ A) 准备并列出待合并提交
 3. `git branch --show-current` 获取当前分支，若不是 to 则 `git switch <to>`
 4. `git fetch --all --prune && git pull --ff-only` 更新（失败则停止）
 5. `git cherry -v <to> <from>` 获取领先提交（只取 `+`）
-6. 输出编号列表：序号/标题/作者/日期（内部保存序号→哈希映射）
+6. 对每个提交执行 `git show --no-patch --format="%h|%s|%an|%ad" --date=short <hash>` 获取详细信息
+7. 输出表格格式（内部保存序号→哈希映射，不显示哈希）：
+   ```
+   序号  标题                      作者        日期
+   1     fix: 修复登录问题         张三        2024-01-15
+   2     feat: 添加新功能          李四        2024-01-16
+   ```
 
 询问：回复 "序号(如 2 4 5)" / "all" / "none"
 
