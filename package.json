@@ -1,6 +1,6 @@
 {
   "name": "claude-code-toolbox",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Claude Code slash commands toolbox - 交互式安装管理",
   "type": "module",
   "bin": {
