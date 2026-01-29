@@ -4,7 +4,7 @@
   "description": "Claude Code slash commands toolbox - 交互式安装管理",
   "type": "module",
   "bin": {
-    "claude-code-toolbox": "./bin/cli.js"
+    "claude-code-toolbox": "bin/cli.js"
   },
   "files": [
     "bin",
